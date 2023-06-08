@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-gi^ji5yjx#1a8b=$a($x$u8-=ppb892z3d#hbzwv*_$u#90o0b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,17 +37,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api'
+    'api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5500',
+    # Add any other domains that need access to your API
 ]
 
 ROOT_URLCONF = 'typejson.urls'
@@ -69,6 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'typejson.wsgi.application'
+
 
 
 # Database

@@ -28,15 +28,16 @@ class MyApiView(APIView):
 #             return Response(data)
 
 
-    def post(self, request):
+    def get(self, request, id=''):
         try:
-            url = 'https://jsonplaceholder.typicode.com/posts/1'
+            # url = 'https://jsonplaceholder.typicode.com/posts/1/comments'
+            url = 'https://jsonplaceholder.typicode.com/users'
             # payload = {'id': id}
             data = request.data
             print(data)
             print(json.dumps(data))
 
-            response = requests.put(url, data=json.dumps(data))
+            response = requests.get(url, data=json.dumps(data))
             print(response)
             print(response.status_code)
 
